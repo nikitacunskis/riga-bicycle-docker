@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dockerrigabicycle:
+    image: dockerrigabicycle
+    build:
+      context: .
+      dockerfile: ./Dockerfile
