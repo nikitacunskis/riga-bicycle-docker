@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    image: laravel-app
+    container_name: app
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "9000:9000"
+      - "80:80"
+    environment:
+      - DB_HOST=db
+      - DB_DATABASE=app
+      - DB_USERNAME=app
+      - DB_PASSWORD=secret
+  db:
+    image: mariadb:10.4
+    container_name: db
+    environment:
+      - MYSQL_DATABASE=app
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:
+
